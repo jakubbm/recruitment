@@ -1,0 +1,116 @@
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Grade</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'warning' %}
+            <div class="alert alert-warning text-center" role="alert">
+            {{message}}
+            </div>
+        {% endif %}
+        {% if message.tags == 'success' %}
+            <div class="alert alert-success text-center" role="alert">
+            {{message}}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<div class="row mt-5">
+    <div class="col-3">
+        <div class="row mt-5">
+            <div class="col-12 d-flex justify-content-center">
+                <h5>Get list as JSON:</h5>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <a href="{% url 'recruitment:list' %}">
+                    <button type="button" class="btn btn-outline-primary">JSON</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <form method= "POST">
+        {% csrf_token %}
+        <div class="row text-center mb-3">
+            <div class="col-9">
+                <label>Candidate</label>
+            </div>
+            
+            <div class="col-9">
+                {{form.candidate|add_class:"form-control"}}
+            </div>
+
+            <div class="col-3">
+                <a href="{% url 'recruitment:candidate' %}">
+                    <button type="button" class="btn btn-outline-primary">Or Create Candidate</button>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="row text-center mb-3">
+            <div class="col-9">
+                <label>Task</label>
+            </div>
+            
+            <div class="col-9">
+                {{form.task|add_class:"form-control"}}
+            </div>
+
+            <div class="col-3">
+                <a href="{% url 'recruitment:task' %}">
+                    <button type="button" class="btn btn-outline-primary">Or Create Task</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-center mb-3">
+            <div class="col-9">
+                <label>Recruiter</label>
+            </div>
+            
+            <div class="col-9">
+                {{form.recruiter|add_class:"form-control"}}
+            </div>
+
+            <div class="col-3">
+                <a href="{% url 'recruitment:recruiter' %}">
+                    <button type="button" class="btn btn-outline-primary">Or Create Recruiter</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="row text-center mb-3">
+            <div class="col-9">
+                <label>Value</label>
+            </div>
+            
+            <div class="col-9">
+                {{form.value|add_class:"form-control"}}
+            </div>
+
+        </div>
+
+        <div class="row text-center">
+            <div class="col-9 mt-3">
+                <button type="submit" class="btn btn-block btn-success">Add Grade</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>

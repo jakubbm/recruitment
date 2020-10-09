@@ -1,0 +1,50 @@
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Recruiter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<div class="row mt-5">
+    <div class="col-12">
+        <form method= "POST">
+        {% csrf_token %}
+        <div class="row text-center mb-3 d-flex justify-content-center">
+            <div class="col-10">
+                <label>First Name</label>
+            </div>
+
+            <div class="col-10">
+                {{form.first_name|add_class:"form-control"}}
+            </div>
+        </div>
+
+        <div class="row text-center mb-3 d-flex justify-content-center">
+            <div class="col-10">
+                <label>Last Name</label>
+            </div>
+
+            <div class="col-10">
+                {{form.last_name|add_class:"form-control"}}
+            </div>
+        </div>
+
+        <div class="row text-center  d-flex justify-content-center">
+            <div class="col-10 mt-3">
+                <button type="submit" class="btn btn-block btn-success">Create Recruiter</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>
